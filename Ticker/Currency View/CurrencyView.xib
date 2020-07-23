@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -21,19 +21,24 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-CO-4sf" userLabel="Flag Image View">
                     <rect key="frame" x="17" y="8" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="B1q-iW-sTZ"/>
-                        <constraint firstAttribute="height" constant="30" id="F39-a2-lDo"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Ate-pb-cC7"/>
                         <constraint firstAttribute="width" secondItem="dcS-CO-4sf" secondAttribute="height" multiplier="1:1" id="Kb2-9C-uS1"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpp-82-dnh" userLabel="Currency Code">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpp-82-dnh" userLabel="Currency Code">
                     <rect key="frame" x="8" y="42" width="48" height="20"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gj-Tu-9ML">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gj-Tu-9ML" userLabel="Rate">
                     <rect key="frame" x="8" y="70" width="48" height="16"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -42,14 +47,16 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="9Gj-Tu-9ML" secondAttribute="trailing" constant="8" id="168-05-Hvt"/>
-                <constraint firstAttribute="trailing" secondItem="dcS-CO-4sf" secondAttribute="trailing" constant="17" id="1ht-up-8Zh"/>
+                <constraint firstItem="dcS-CO-4sf" firstAttribute="leading" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="17" id="9hb-Be-JfB"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dcS-CO-4sf" secondAttribute="trailing" priority="750" constant="17" id="RjK-wU-8va"/>
                 <constraint firstItem="cpp-82-dnh" firstAttribute="top" secondItem="dcS-CO-4sf" secondAttribute="bottom" constant="4" id="V1X-1f-yMh"/>
+                <constraint firstItem="dcS-CO-4sf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WnZ-bH-pPk"/>
                 <constraint firstAttribute="trailing" secondItem="cpp-82-dnh" secondAttribute="trailing" constant="8" id="Ypd-0A-hgh"/>
+                <constraint firstAttribute="bottom" secondItem="9Gj-Tu-9ML" secondAttribute="bottom" constant="4" id="aSA-Ul-TUE"/>
                 <constraint firstItem="cpp-82-dnh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="b80-m0-IyU"/>
                 <constraint firstItem="9Gj-Tu-9ML" firstAttribute="top" secondItem="cpp-82-dnh" secondAttribute="bottom" constant="8" id="f3N-sx-d0f"/>
                 <constraint firstItem="dcS-CO-4sf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="tyt-wq-u2O"/>
                 <constraint firstItem="9Gj-Tu-9ML" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uKH-XE-hXW"/>
-                <constraint firstItem="dcS-CO-4sf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="xay-Av-Kj9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>

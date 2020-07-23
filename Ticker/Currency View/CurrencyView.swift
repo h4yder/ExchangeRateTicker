@@ -11,6 +11,10 @@
 import UIKit
 
 class CurrencyView: UIView {
+    private struct Constants {
+        static let maximumFontSize: CGFloat = 40.0
+    }
+    
     @IBOutlet private weak var flagImageView: UIImageView!
     @IBOutlet private weak var codeLabel: UILabel!
     @IBOutlet private weak var rateLabel: UILabel!
@@ -53,9 +57,15 @@ class CurrencyView: UIView {
                                      topView.trailingAnchor.constraint(equalTo: trailingAnchor),
                                      topView.topAnchor.constraint(equalTo: topAnchor),
                                      topView.bottomAnchor.constraint(equalTo: bottomAnchor)])
+        
+        configureAccessibility()
+    }
+    
+    override func updateConstraints() {
         flagImageView.layer.cornerRadius = flagImageView.frame.size.width * 0.5
         flagImageView.layer.borderWidth = 0.5
-        flagImageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.15).cgColor
+        flagImageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.2).cgColor
+        super.updateConstraints()
     }
     
     override func didMoveToSuperview() {
@@ -65,6 +75,7 @@ class CurrencyView: UIView {
         }
         
         update()
+        updateConstraints()
     }
     
     private func update() {
@@ -75,5 +86,27 @@ class CurrencyView: UIView {
         flagImageView?.image = UIImage(named: currency.imageName)
         codeLabel?.text = currency.code
         rateLabel?.text = currency.rate
+        
+        configureAccessibilityElement()
+    }
+    
+    //MARK: - Accessibility
+
+    private func configureAccessibility() {
+        // Configure the label's fonts to be accessible
+        for label in [codeLabel, rateLabel] {
+            if let font = label?.font {
+                label?.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font, maximumPointSize: Constants.maximumFontSize)
+            }
+        }
+    }
+    
+    private func configureAccessibilityElement() {
+        guard let currency = currency else {
+            return
+        }
+        
+        let element = CurrencyViewAccessibilityElement(accessibilityContainer: self, currency: currency)
+        accessibilityElements = [element]
     }
 }

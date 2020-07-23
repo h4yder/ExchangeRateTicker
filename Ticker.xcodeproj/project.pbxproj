@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		844C632524C9DF4A0094F5A5 /* CurrencyViewAccessibilityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C632424C9DF4A0094F5A5 /* CurrencyViewAccessibilityElement.swift */; };
+		844C632824C9E23A0094F5A5 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C632724C9E23A0094F5A5 /* Currency.swift */; };
+		844C632B24C9F3310094F5A5 /* cache.json in Resources */ = {isa = PBXBuildFile; fileRef = 844C632A24C9F3310094F5A5 /* cache.json */; };
 		845D85A324B75E7A003601CC /* TickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85A124B75E7A003601CC /* TickerViewController.swift */; };
 		845D85A424B75E7A003601CC /* TickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D85A224B75E7A003601CC /* TickerViewController.xib */; };
 		84722CA424AE168900E066D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84722CA324AE168900E066D9 /* AppDelegate.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		844C632424C9DF4A0094F5A5 /* CurrencyViewAccessibilityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewAccessibilityElement.swift; sourceTree = "<group>"; };
+		844C632724C9E23A0094F5A5 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		844C632A24C9F3310094F5A5 /* cache.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cache.json; sourceTree = "<group>"; };
 		845D85A124B75E7A003601CC /* TickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TickerViewController.swift; path = ../TickerViewController.swift; sourceTree = "<group>"; };
 		845D85A224B75E7A003601CC /* TickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TickerViewController.xib; path = ../TickerViewController.xib; sourceTree = "<group>"; };
 		84722CA024AE168900E066D9 /* Ticker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ticker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		844C632624C9E2250094F5A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				844C632724C9E23A0094F5A5 /* Currency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		844C632924C9F3240094F5A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				844C632A24C9F3310094F5A5 /* cache.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		846045BF24BF4ACA004A8A4F /* Ticker View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +109,8 @@
 		84722CA224AE168900E066D9 /* Ticker */ = {
 			isa = PBXGroup;
 			children = (
+				844C632924C9F3240094F5A5 /* Resources */,
+				844C632624C9E2250094F5A5 /* Models */,
 				84722CB724AE169800E066D9 /* Currency View */,
 				846045C024BF4AE8004A8A4F /* Services */,
 				846045BF24BF4ACA004A8A4F /* Ticker View Controller */,
@@ -106,6 +130,7 @@
 			children = (
 				84722CB824AE24DF00E066D9 /* CurrencyView.swift */,
 				84722CBA24AE257900E066D9 /* CurrencyView.xib */,
+				844C632424C9DF4A0094F5A5 /* CurrencyViewAccessibilityElement.swift */,
 			);
 			path = "Currency View";
 			sourceTree = "<group>";
@@ -168,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844C632B24C9F3310094F5A5 /* cache.json in Resources */,
 				845D85A424B75E7A003601CC /* TickerViewController.xib in Resources */,
 				84722CB024AE168C00E066D9 /* LaunchScreen.storyboard in Resources */,
 				84722CAD24AE168C00E066D9 /* Assets.xcassets in Resources */,
@@ -187,8 +213,10 @@
 				84722CA824AE168900E066D9 /* ViewController.swift in Sources */,
 				845D85A324B75E7A003601CC /* TickerViewController.swift in Sources */,
 				84722CA424AE168900E066D9 /* AppDelegate.swift in Sources */,
+				844C632824C9E23A0094F5A5 /* Currency.swift in Sources */,
 				84722CA624AE168900E066D9 /* SceneDelegate.swift in Sources */,
 				84722CB924AE24DF00E066D9 /* CurrencyView.swift in Sources */,
+				844C632524C9DF4A0094F5A5 /* CurrencyViewAccessibilityElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

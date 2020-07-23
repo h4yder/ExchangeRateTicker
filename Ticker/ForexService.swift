@@ -10,15 +10,6 @@
 
 import Foundation
 
-struct Currency {
-    let code: String
-    let rate: String
-    
-    var imageName: String {
-        return code.lowercased()
-    }
-}
-
 class ForexService {
     private struct Constants {
         // Get an appId from https://docs.openexchangerates.org/docs/authentication
@@ -28,8 +19,16 @@ class ForexService {
     
     func latestPrices(completion: @escaping ([Currency])->Void) {
         guard !Constants.appId.isEmpty else {
-            fatalError("appid is missing, will not be able to fetch currency exchange rate.")
+            if let cachePath = Bundle.main.url(forResource: "cache", withExtension: "json"),
+                let data = try? Data(contentsOf: cachePath) {
+                print("Using cached data, rates pulled on 23 July 2020")
+                let currencies = self.parse(data)
+                completion(currencies)
+            }
+            
+            return
         }
+        
         let urlString = Constants.latestPricesAPI + "?app_id=\(Constants.appId)"
         guard let url = URL(string: urlString) else {
             completion([])

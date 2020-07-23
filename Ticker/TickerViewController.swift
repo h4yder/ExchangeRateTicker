@@ -17,11 +17,19 @@ class TickerViewController: UIViewController {
     private var currencies: [Currency] = [] {
         didSet {
             configureCurrencyViews()
+            UIAccessibility.post(notification: .layoutChanged, argument: nil)
         }
     }
 
     var displayLink: CADisplayLink?
     
+    var recommendedHeight: CGFloat {
+        guard !currencies.isEmpty else {
+            return CGFloat(90.0)
+        }
+        view.layoutIfNeeded()
+        return scrollView.contentSize.height
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -38,8 +46,18 @@ class TickerViewController: UIViewController {
         _ = bundle.loadNibNamed(String(describing: TickerViewController.self),
                                      owner: self,
                                      options: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(voiceOverStatusChanged), name: UIAccessibility.voiceOverStatusDidChangeNotification, object: nil)
     }
-
+    
+    @objc func voiceOverStatusChanged() {
+        if UIAccessibility.isVoiceOverRunning {
+            stopAnimationTimer()
+        } else {
+            startAnimationTimer()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,6 +126,12 @@ class TickerViewController: UIViewController {
         scrollView.addConstraint(trailingConstraint)
         scrollView.layoutIfNeeded()
         
+        currencySubviews().forEach {
+            if let element = $0.accessibilityElements?.first as? UIAccessibilityElement {
+                element.accessibilityFrameInContainerSpace = $0.bounds
+            }
+        }
+        
         // If total width of the views exceeds the width of the scroll view, animate the scroll view
         if scrollView.contentSize.width > scrollView.frame.size.width {
             startAnimationTimer()
@@ -115,6 +139,10 @@ class TickerViewController: UIViewController {
     }
     
     fileprivate func startAnimationTimer() {
+        guard UIAccessibility.isVoiceOverRunning == false else {
+            return
+        }
+        
         if displayLink == nil {
             displayLink = CADisplayLink(target: self, selector: #selector(update))
             displayLink?.add(to: RunLoop.current, forMode: .default)
